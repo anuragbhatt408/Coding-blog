@@ -1,0 +1,96 @@
+
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Admin Panel</h1>
+            <span class="subheading">Manage your post and save them</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h1>Upload a file</h1>
+          We will upload a file
+        <h1>ADD/Edit Posts</h1>
+        <h1>Basic Actions</h1>
+        <a href="/dashboard" ><button class="btn btn-primary">dashboard home</button></a>
+        <a href="/logout" ><button class="btn btn-primary">Logout</button></a>
+        <hr>
+        
+        <!-- Pager -->
+        <div class="clearfix">
+          WELCOME YOU ARE LOGGED IN 
+
+          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
+   <form name="sentMessage" id="contactForm" novalidate action="/edit/{{post.sno}}"  method="post">
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Title</label>
+              <input type="text" class="form-control" placeholder="Title" id="title" name='title' required data-validation-required-message="Please enter your name." value="{{post.title}}">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Tagline</label>
+              <input type="text" class="form-control" placeholder="Tag line" id="tline" name='tline'required data-validation-required-message="Please enter your email address." value="{{post.tagline}}">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>slug</label>
+              <input type="text" class="form-control" placeholder="slug" id="slug" name='slug' required data-validation-required-message="Please enter your phone number." value="{{post.slug}}">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>content</label>
+              <textarea rows="5" class="form-control" placeholder="content" id="content" name='content' required data-validation-required-message="Please enter a message.">{{post.content}}</textarea>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+        </form>
+            </div>
+    </div>
+  </div>
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src=" {{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+  <script src=" {{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src=" {{ url_for('static', filename='js/clean-blog.min.js') }}"></script>
+
+</body>
+
+</html>
+
+{% endblock %}
